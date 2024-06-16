@@ -1,0 +1,544 @@
+import java.util.Scanner;
+
+
+public class UnitConverter {
+   public static void main(String[] args) {
+       Scanner scanner = new Scanner(System.in);
+       boolean running = true;
+
+
+       while (running) {
+           System.out.println("Выберите физическую величину:");
+           System.out.println("1. Длина");
+           System.out.println("2. Масса");
+           System.out.println("3. Время");
+           System.out.println("4. Площадь");
+           System.out.println("5. Объем");
+           System.out.println("6. Температура");
+           System.out.println("7. Энергия");
+           System.out.println("0. Выход");
+
+
+           int choice = scanner.nextInt();
+
+
+           switch (choice) {
+               case 1:
+                   convertLength(scanner);
+                   break;
+               case 2:
+                   convertMass(scanner);
+                   break;
+               case 3:
+                   convertTime(scanner);
+                   break;
+               case 4:
+                   convertArea(scanner);
+                   break;
+               case 5:
+                   convertVolume(scanner);
+                   break;
+               case 6:
+                   convertTemperature(scanner);
+                   break;
+               case 7:
+                   convertEnergy(scanner);
+                   break;
+               case 0:
+                   running = false;
+                   break;
+               default:
+                   System.out.println("Неверный выбор. Попробуйте снова.");
+           }
+       }
+   }
+
+
+   private static void convertLength(Scanner scanner) {
+       System.out.println("Введите значение длины:");
+       double value = scanner.nextDouble();
+       System.out.println("Выберите единицу измерения:");
+       System.out.println("1. Метры");
+       System.out.println("2. Километры");
+       System.out.println("3. Сантиметры");
+       System.out.println("4. Миллиметры");
+       System.out.println("5. Мили");
+       System.out.println("6. Ярды");
+       System.out.println("7. Футы");
+
+
+       int unitFrom = scanner.nextInt();
+       System.out.println("Выберите единицу измерения для конвертации:");
+       int unitTo = scanner.nextInt();
+
+
+       if (unitFrom < 1 || unitFrom > 7 || unitTo < 1 || unitTo > 7) {
+           System.out.println("Некорректные единицы измерения.");
+           return;
+       }
+
+
+       double result = convertLength(value, unitFrom, unitTo);
+       System.out.println("Результат: " + result);
+   }
+
+
+   private static double convertLength(double value, int unitFrom, int unitTo) {
+       double meters = 0;
+       switch (unitFrom) {
+           case 1: // Метры
+               meters = value;
+               break;
+           case 2: // Километры
+               meters = value * 1000;
+               break;
+           case 3: // Сантиметры
+               meters = value / 100;
+               break;
+           case 4: // Миллиметры
+               meters = value / 1000;
+               break;
+           case 5: // Мили
+               meters = value * 1609.34;
+               break;
+           case 6: // Ярды
+               meters = value * 0.9144;
+               break;
+           case 7: // Футы
+               meters = value * 0.3048;
+               break;
+       }
+
+
+       double result = 0;
+       switch (unitTo) {
+           case 1: // Метры
+               result = meters;
+               break;
+           case 2: // Километры
+               result = meters / 1000;
+               break;
+           case 3: // Сантиметры
+               result = meters * 100;
+               break;
+           case 4: // Миллиметры
+               result = meters * 1000;
+               break;
+           case 5: // Мили
+               result = meters / 1609.34;
+               break;
+           case 6: // Ярды
+               result = meters / 0.9144;
+               break;
+           case 7: // Футы
+               result = meters / 0.3048;
+               break;
+       }
+
+
+       return result;
+   }
+   private static void convertMass(Scanner scanner) {
+       System.out.println("Введите значение массы:");
+       double value = scanner.nextDouble();
+       System.out.println("Выберите единицу измерения:");
+       System.out.println("1. Килограммы");
+       System.out.println("2. Граммы");
+       System.out.println("3. Миллиграммы");
+       System.out.println("4. Метрические тонны");
+       System.out.println("5. Фунты");
+       System.out.println("6. Унции");
+
+
+       int unitFrom = scanner.nextInt();
+       System.out.println("Выберите единицу измерения для конвертации:");
+       int unitTo = scanner.nextInt();
+
+
+       double result = convertMass(value, unitFrom, unitTo);
+       System.out.println("Результат: " + result);
+   }
+
+
+   private static void convertTime(Scanner scanner) {
+       System.out.println("Введите значение времени:");
+       double value = scanner.nextDouble();
+       System.out.println("Выберите единицу измерения:");
+       System.out.println("1. Секунды");
+       System.out.println("2. Минуты");
+       System.out.println("3. Часы");
+       System.out.println("4. Дни");
+       System.out.println("5. Недели");
+       System.out.println("6. Месяцы");
+       System.out.println("7. Годы");
+
+
+       int unitFrom = scanner.nextInt();
+       System.out.println("Выберите единицу измерения для конвертации:");
+       int unitTo = scanner.nextInt();
+
+
+       double result = convertTime(value, unitFrom, unitTo);
+       System.out.println("Результат: " + result);
+   }
+
+
+   private static void convertArea(Scanner scanner) {
+       System.out.println("Введите значение площади:");
+       double value = scanner.nextDouble();
+       System.out.println("Выберите единицу измерения:");
+       System.out.println("1. Квадратные метры");
+       System.out.println("2. Квадратные километры");
+       System.out.println("3. Гектары");
+       System.out.println("4. Квадратные сантиметры");
+       System.out.println("5. Квадратные мили");
+       System.out.println("6. Акры");
+       System.out.println("7. Квадратные ярды");
+
+
+       int unitFrom = scanner.nextInt();
+       System.out.println("Выберите единицу измерения для конвертации:");
+       int unitTo = scanner.nextInt();
+
+
+       double result = convertArea(value, unitFrom, unitTo);
+       System.out.println("Результат: " + result);
+   }
+
+
+   private static void convertVolume(Scanner scanner) {
+       System.out.println("Введите значение объема:");
+       double value = scanner.nextDouble();
+       System.out.println("Выберите единицу измерения:");
+       System.out.println("1. Литры");
+       System.out.println("2. Миллилитры");
+       System.out.println("3. Кубические метры");
+       System.out.println("4. Кубические сантиметры");
+       System.out.println("5. Галлоны");
+       System.out.println("6. Кварты");
+       System.out.println("7. Пинты");
+
+
+       int unitFrom = scanner.nextInt();
+       System.out.println("Выберите единицу измерения для конвертации:");
+       int unitTo = scanner.nextInt();
+
+
+       double result = convertVolume(value, unitFrom, unitTo);
+       System.out.println("Результат: " + result);
+   }
+
+
+   private static void convertTemperature(Scanner scanner) {
+       System.out.println("Введите значение температуры:");
+       double value = scanner.nextDouble();
+       System.out.println("Выберите единицу измерения:");
+       System.out.println("1. Градусы Цельсия");
+       System.out.println("2. Градусы Фаренгейта");
+       System.out.println("3. Кельвины");
+
+
+       int unitFrom = scanner.nextInt();
+       System.out.println("Выберите единицу измерения для конвертации:");
+       int unitTo = scanner.nextInt();
+
+
+       double result = convertTemperature(value, unitFrom, unitTo);
+       System.out.println("Результат: " + result);
+   }
+
+
+   private static void convertEnergy(Scanner scanner) {
+       System.out.println("Введите значение энергии:");
+       double value = scanner.nextDouble();
+       System.out.println("Выберите единицу измерения:");
+       System.out.println("1. Джоули");
+       System.out.println("2. Калории");
+       System.out.println("3. Килокалории");
+       System.out.println("4. Киловатт-часы");
+       System.out.println("5. Британские тепловые единицы");
+       System.out.println("6. Электрон-вольты");
+
+
+       int unitFrom = scanner.nextInt();
+       System.out.println("Выберите единицу измерения для конвертации:");
+       int unitTo = scanner.nextInt();
+
+
+       if (unitFrom < 1 || unitFrom > 6 || unitTo < 1 || unitTo > 6) {
+           System.out.println("Некорректные единицы измерения.");
+           return;
+       }
+
+
+       double result = convertEnergy(value, unitFrom, unitTo);
+       System.out.println("Результат: " + result);
+   }
+
+
+   private static double convertEnergy(double value, int unitFrom, int unitTo) {
+       double joules = 0;
+       switch (unitFrom) {
+           case 1: // Джоули
+               joules = value;
+               break;
+           case 2: // Калории
+               joules = value * 4.1868;
+               break;
+           case 3: // Килокалории
+               joules = value * 4186.8;
+               break;
+           case 4: // Киловатт-часы
+               joules = value * 3600000;
+               break;
+           case 5: // Британские тепловые единицы
+               joules = value * 1055.05585;
+               break;
+           case 6: // Электрон-вольты
+               joules = value * 1.602176634e-19;
+               break;
+       }
+
+
+       double result = 0;
+       switch (unitTo) {
+           case 1: // Джоули
+               result = joules;
+               break;
+           case 2: // Калории
+               result = joules / 4.1868;
+               break;
+           case 3: // Килокалории
+               result = joules / 4186.8;
+               break;
+           case 4: // Киловатт-часы
+               result = joules / 3600000;
+               break;
+           case 5: // Британские тепловые единицы
+               result = joules / 1055.05585;
+               break;
+           case 6: // Электрон-вольты
+               result = joules / 1.602176634e-19;
+               break;
+       }
+
+
+       return result;
+   }
+   private static double convertMass(double value, int unitFrom, int unitTo) {
+       double kilogram = 0;
+       switch (unitFrom) {
+           case 1: // Килограммы
+               kilogram = value;
+               break;
+           case 2: // Граммы
+               kilogram = value / 1000;
+               break;
+           case 3: // Миллиграммы
+               kilogram = value / 1000000;
+               break;
+           case 4: // Метрические тонны
+               kilogram = value * 1000;
+               break;
+           case 5: // Фунты
+               kilogram = value * 0.453592;
+               break;
+           case 6: // Унции
+               kilogram = value * 0.0283495;
+               break;
+       }
+
+
+       switch (unitTo) {
+           case 1: // Килограммы
+               return kilogram;
+           case 2: // Граммы
+               return kilogram * 1000;
+           case 3: // Миллиграммы
+               return kilogram * 1000000;
+           case 4: // Метрические тонны
+               return kilogram / 1000;
+           case 5: // Фунты
+               return kilogram / 0.453592;
+           case 6: // Унции
+               return kilogram / 0.0283495;
+       }
+
+
+       return 0;
+   }
+
+
+   private static double convertTime(double value, int unitFrom, int unitTo) {
+       double second = 0;
+       switch (unitFrom) {
+           case 1: // Секунды
+               second = value;
+               break;
+           case 2: // Минуты
+               second = value * 60;
+               break;
+           case 3: // Часы
+               second = value * 3600;
+               break;
+           case 4: // Дни
+               second = value * 86400;
+               break;
+           case 5: // Недели
+               second = value * 604800;
+               break;
+           case 6: // Месяцы
+               second = value * 2628000;
+               break;
+           case 7: // Годы
+               second = value * 31536000;
+               break;
+       }
+
+
+       switch (unitTo) {
+           case 1: // Секунды
+               return second;
+           case 2: // Минуты
+               return second / 60;
+           case 3: // Часы
+               return second / 3600;
+           case 4: // Дни
+               return second / 86400;
+           case 5: // Недели
+               return second / 604800;
+           case 6: // Месяцы
+               return second / 2628000;
+           case 7: // Годы
+               return second / 31536000;
+       }
+
+
+       return 0;
+   }
+   private static double convertArea(double value, int unitFrom, int unitTo) {
+       double squareMeter = 0;
+       switch (unitFrom) {
+           case 1: // Квадратные метры
+               squareMeter = value;
+               break;
+           case 2: // Квадратные километры
+               squareMeter = value * 1000000;
+               break;
+           case 3: // Гектары
+               squareMeter = value * 10000;
+               break;
+           case 4: // Квадратные сантиметры
+               squareMeter = value / 10000;
+               break;
+           case 5: // Квадратные мили
+               squareMeter = value * 2589988.11;
+               break;
+           case 6: // Акры
+               squareMeter = value * 4046.86;
+               break;
+           case 7: // Квадратные ярды
+               squareMeter = value * 0.836127;
+               break;
+       }
+
+
+       switch (unitTo) {
+           case 1: // Квадратные метры
+               return squareMeter;
+           case 2: // Квадратные километры
+               return squareMeter / 1000000;
+           case 3: // Гектары
+               return squareMeter / 10000;
+           case 4: // Квадратные сантиметры
+               return squareMeter * 10000;
+           case 5: // Квадратные мили
+               return squareMeter / 2589988.11;
+           case 6: // Акры
+               return squareMeter / 4046.86;
+           case 7: // Квадратные ярды
+               return squareMeter / 0.836127;
+       }
+
+
+       return 0;
+   }
+
+
+   private static double convertVolume(double value, int unitFrom, int unitTo) {
+       double liter = 0;
+       switch (unitFrom) {
+           case 1: // Литры
+               liter = value;
+               break;
+           case 2: // Миллилитры
+               liter = value / 1000;
+               break;
+           case 3: // Кубические метры
+               liter = value * 1000;
+               break;
+           case 4: // Кубические сантиметры
+               liter = value / 1000000;
+               break;
+           case 5: // Галлоны
+               liter = value * 3.78541;
+               break;
+           case 6: // Кварты
+               liter = value * 0.946353;
+               break;
+           case 7: // Пинты
+               liter = value * 0.473176;
+               break;
+       }
+
+
+       switch (unitTo) {
+           case 1: // Литры
+               return liter;
+           case 2: // Миллилитры
+               return liter * 1000;
+           case 3: // Кубические метры
+               return liter / 1000;
+           case 4: // Кубические сантиметры
+               return liter * 1000000;
+           case 5: // Галлоны
+               return liter / 3.78541;
+           case 6: // Кварты
+               return liter / 0.946353;
+           case 7: // Пинты
+               return liter / 0.473176;
+       }
+
+
+       return 0;
+   }
+
+
+   private static double convertTemperature(double value, int unitFrom, int unitTo) {
+       double celsius = 0;
+       switch (unitFrom) {
+           case 1: // Градусы Цельсия
+               celsius = value;
+               break;
+           case 2: // Градусы Фаренгейта
+               celsius = (value - 32) * 5 / 9;
+               break;
+           case 3: // Кельвины
+               celsius = value - 273.15;
+               break;
+       }
+
+
+       switch (unitTo) {
+           case 1: // Градусы Цельсия
+               return celsius;
+           case 2: // Градусы Фаренгейта
+               return (celsius * 9 / 5) + 32;
+           case 3: // Кельвины
+               return celsius + 273.15;
+       }
+
+
+       return 0;
+   }
+}
